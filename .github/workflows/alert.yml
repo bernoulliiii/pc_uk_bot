@@ -1,0 +1,30 @@
+name: Trading Cards Monitor
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # Runs every 30 minutes (adjust based on GitHub's free tier)
+  workflow_dispatch:
+
+jobs:
+  check-products:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 python-telegram-bot
+
+      - name: Run script with loop
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          for i in {1..18}; do  # Loop for 3 minutes (18 * 10s = 180s)
+            python main.py
+            sleep 10  # Check every 10 seconds (adjust if website blocks you)
+          done
