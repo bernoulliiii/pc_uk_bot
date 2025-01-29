@@ -1,7 +1,8 @@
 name: Trading Cards Monitor
 on:
   schedule:
-    - cron: '*/30 * * * *'  # Runs every 30 minutes (adjust based on GitHub's free tier)
+    #- cron: '*/30 * * * *'  # Runs every 30 minutes (adjust based on GitHub's free tier)
+    - cron: '0 */3 * * *'  # Run every 3 hours (8 times/day)
   workflow_dispatch:
 
 jobs:
