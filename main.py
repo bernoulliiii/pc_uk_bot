@@ -9,7 +9,7 @@ import logging
 # Configuration
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
-TRADING_CARDS_URL = 'https://www.pokemoncenter.com/en-gb/category/trading-cards'  # Verify URL
+TRADING_CARDS_URL = 'https://www.pokemoncenter.com/en-gb/category/trading-card-game'  # Verify URL
 STORAGE_FILE = 'known_products.json'
 
 # Set up logging
